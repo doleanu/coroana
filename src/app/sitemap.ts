@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
   return [
     { url: `${BASE}/`, priority: 1, alternates: { languages } },
+    { url: `${BASE}/nunta`, priority: 0.9 },
+    { url: `${BASE}/confidentialitate`, priority: 0.3 },
     { url: `${BASE}/en`, priority: 0.8, alternates: { languages } },
     { url: `${BASE}/it`, priority: 0.8, alternates: { languages } },
     { url: `${BASE}/es`, priority: 0.8, alternates: { languages } },

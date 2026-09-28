@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
+import LangSync from "@/components/LangSync";
 import "./globals.css";
 
 const serif = Fraunces({
@@ -20,7 +21,7 @@ const sans = Manrope({
 export const metadata: Metadata = {
   title: "Hotel & Restaurant Coroana — Războieni, Iași | Cazare, Restaurant & Coroana Events",
   description:
-    "Hotel & Restaurant Coroana, la km 31 pe șoseaua Iași – Târgu Frumos: 43 de camere moderne cu mic dejun inclus, restaurant cu preparate savuroase și Coroana Events — cea mai mare locație de evenimente din Moldova, până la 1.000 de invitați.",
+    "Hotel & Restaurant Coroana, la km 31 pe șoseaua Iași – Târgu Frumos: 43 de camere moderne, restaurant cu preparate savuroase și Coroana Events — cea mai mare locație de evenimente din Moldova, până la 1.000 de invitați.",
   metadataBase: new URL("https://hotelcoroana.ro"),
   alternates: {
     languages: {
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="ro" className={`${serif.variable} ${sans.variable}`}>
       <body className="bg-paper font-sans text-charcoal antialiased">
+        <LangSync />
         {children}
       </body>
     </html>

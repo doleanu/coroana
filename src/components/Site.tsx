@@ -1,3 +1,4 @@
+import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
 import { DICTS, LOCALES, localePath, type Locale } from "@/lib/dict";
@@ -6,6 +7,7 @@ const TEL_RECEPTION = "+40232711500";
 const TEL_RECEPTION_2 = "+40755081783";
 const TEL_EVENTS = "+40786298932";
 const MAPS_URL = "https://maps.app.goo.gl/XToMctMBVkWNofkR9";
+const MENU_URL = "https://meniu.hotelcoroana.ro";
 
 function SectionHeading({
   no,
@@ -57,10 +59,17 @@ function Figure({
   return (
     <figure className={className}>
       <div
-        className={`photo-frame ${frameClassName}`}
+        className={`photo-frame relative ${frameClassName}`}
         style={ratio ? { aspectRatio: ratio } : undefined}
       >
-        <img src={src} alt={alt} loading={eager ? "eager" : "lazy"} />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="(min-width: 1024px) 33vw, 50vw"
+          priority={eager}
+        />
       </div>
       {caption ? (
         <figcaption className="mt-2 font-sans text-[0.68rem] uppercase tracking-label text-stone">
@@ -115,9 +124,12 @@ export default function Site({ locale }: { locale: Locale }) {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-deep/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-page items-center justify-between gap-4 px-5 sm:h-[4.5rem] sm:px-8">
           <a href={localePath(locale)} aria-label="Hotel & Restaurant Coroana">
-            <img
+            <Image
               src="/logo-coroana.png"
               alt="Coroana — A glamorous place to be"
+              width={419}
+              height={210}
+              priority
               className="h-10 w-auto sm:h-11"
             />
           </a>
@@ -155,10 +167,13 @@ export default function Site({ locale }: { locale: Locale }) {
 
       {/* ————————————————— Hero ————————————————— */}
       <section className="relative flex min-h-[94svh] items-end overflow-hidden bg-ink-deep">
-        <img
+        <Image
           src="/photos/venue-pano.jpg"
           alt={d.hero.alt}
-          className="absolute inset-0 h-full w-full object-cover"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-deep via-ink-deep/40 to-ink-deep/25" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink-deep/80 via-ink-deep/35 to-transparent" />
@@ -187,7 +202,7 @@ export default function Site({ locale }: { locale: Locale }) {
             </div>
             <p className="mt-8 font-sans text-sm text-ivory/70">
               <span className="text-gold-bright">★</span>{" "}
-              <strong className="font-bold text-ivory">4,4</strong> · {d.hero.rating}
+              <strong className="font-bold text-ivory">4,5</strong> · {d.hero.rating}
             </p>
           </Reveal>
         </div>
@@ -354,8 +369,14 @@ export default function Site({ locale }: { locale: Locale }) {
                   key={img}
                   className="w-56 flex-none snap-start border border-linen bg-paper p-3 sm:w-64 lg:w-auto"
                 >
-                  <div className="photo-frame" style={{ aspectRatio: "3/2" }}>
-                    <img src={`/photos/${img}.jpg`} alt={name} loading="lazy" />
+                  <div className="photo-frame relative" style={{ aspectRatio: "3/2" }}>
+                    <Image
+                      src={`/photos/${img}.jpg`}
+                      alt={name}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1024px) 16vw, 224px"
+                    />
                   </div>
                   <figcaption className="mt-3 font-serif text-lg italic leading-snug text-ink-deep">
                     {name}
@@ -363,6 +384,14 @@ export default function Site({ locale }: { locale: Locale }) {
                 </figure>
               ))}
             </div>
+            <a
+              href={MENU_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-9 inline-flex items-center justify-center bg-ink px-8 py-4 font-sans text-[0.72rem] font-bold uppercase tracking-label text-ivory transition-colors hover:bg-ink-soft"
+            >
+              {d.restaurant.viewMenu}
+            </a>
           </Reveal>
         </div>
       </section>
@@ -380,9 +409,11 @@ export default function Site({ locale }: { locale: Locale }) {
               </span>
               <span className="small-caps-label text-gold-bright">{d.events.label}</span>
               <span className="h-px flex-1 bg-gold/25" />
-              <img
+              <Image
                 src="/logo-events-alb.png"
                 alt="Coroana Events"
+                width={203}
+                height={100}
                 className="h-12 w-auto sm:h-14"
               />
             </div>
@@ -485,17 +516,26 @@ export default function Site({ locale }: { locale: Locale }) {
                 events@hotelcoroana.ro
               </a>
             </div>
+            {locale === "ro" ? (
+              <a
+                href="/nunta"
+                className="mt-6 inline-block border-b border-gold-bright/60 pb-0.5 font-sans text-[0.72rem] font-bold uppercase tracking-label text-gold-bright transition-colors hover:text-ivory"
+              >
+                {d.events.viewWeddingPage}
+              </a>
+            ) : null}
           </Reveal>
         </div>
       </section>
 
       {/* ————————————————— Night band ————————————————— */}
       <section className="relative flex min-h-[52svh] items-end overflow-hidden bg-ink-deep">
-        <img
+        <Image
           src="/photos/venue-night-2.jpg"
           alt={d.night.alt}
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover"
+          fill
+          className="object-cover"
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink-deep/90 via-transparent to-transparent" />
         <div className="relative mx-auto w-full max-w-page px-5 pb-14 pt-32 sm:px-8">
@@ -586,11 +626,12 @@ export default function Site({ locale }: { locale: Locale }) {
 
       {/* ————————————————— Footer ————————————————— */}
       <footer className="bg-ink-deep py-14 text-center texture-grain-dark">
-        <img
+        <Image
           src="/logo-coroana-alb.png"
           alt="Coroana"
+          width={315}
+          height={160}
           className="mx-auto h-16 w-auto"
-          loading="lazy"
         />
         <LangSwitcher
           current={locale}
@@ -601,6 +642,14 @@ export default function Site({ locale }: { locale: Locale }) {
         <p className="mt-6 font-sans text-sm text-ivory/65">{d.footer.copyright}</p>
         <p className="mt-3 font-sans text-[0.68rem] uppercase tracking-label text-ivory/35">
           {d.footer.concept}
+        </p>
+        <p className="mt-4">
+          <a
+            href="/confidentialitate"
+            className="font-sans text-[0.68rem] uppercase tracking-label text-ivory/45 transition-colors hover:text-gold-bright"
+          >
+            {d.footer.privacy}
+          </a>
         </p>
       </footer>
     </main>

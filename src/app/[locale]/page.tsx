@@ -22,9 +22,11 @@ export async function generateMetadata({
   return {
     title: d.metaTitle,
     description: d.metaDescription,
+    alternates: { canonical: `/${locale}` },
     openGraph: {
       title: d.metaTitle,
       description: d.metaDescription,
+      url: `/${locale}`,
       type: "website",
       images: ["/photos/venue-pano.jpg"],
     },

@@ -18,7 +18,7 @@ const GRAPH = {
       "@id": `${BASE}/#hotel`,
       name: "Hotel & Restaurant Coroana",
       description:
-        "Hotel cu 43 de camere moderne cu mic dejun inclus, restaurant și Coroana Events — cea mai mare locație de evenimente din Moldova, la km 31 pe șoseaua Iași – Târgu Frumos.",
+        "Hotel cu 43 de camere moderne, restaurant și Coroana Events — cea mai mare locație de evenimente din Moldova, la km 31 pe șoseaua Iași – Târgu Frumos.",
       url: `${BASE}/`,
       image: `${BASE}/photos/venue-pano.jpg`,
       logo: `${BASE}/logo-coroana.png`,
@@ -27,15 +27,16 @@ const GRAPH = {
       numberOfRooms: 43,
       priceRange: "150–390 RON",
       address: ADDRESS,
+      // Coordinates resolved from the venue's own Google Maps place link — not guessed.
+      geo: { "@type": "GeoCoordinates", latitude: 47.21972, longitude: 27.0620843 },
       hasMap: "https://maps.app.goo.gl/XToMctMBVkWNofkR9",
       aggregateRating: {
         "@type": "AggregateRating",
-        ratingValue: "4.4",
+        ratingValue: "4.5",
         bestRating: "5",
-        reviewCount: "2329",
+        reviewCount: "2348",
       },
       amenityFeature: [
-        { "@type": "LocationFeatureSpecification", name: "Mic dejun inclus", value: true },
         { "@type": "LocationFeatureSpecification", name: "Wi-Fi gratuit", value: true },
         {
           "@type": "LocationFeatureSpecification",
