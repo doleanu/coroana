@@ -640,9 +640,6 @@ export default function Site({ locale }: { locale: Locale }) {
           activeClass="text-gold-bright"
         />
         <p className="mt-6 font-sans text-sm text-ivory/65">{d.footer.copyright}</p>
-        <p className="mt-3 font-sans text-[0.68rem] uppercase tracking-label text-ivory/35">
-          {d.footer.concept}
-        </p>
         <p className="mt-4">
           <a
             href="/confidentialitate"

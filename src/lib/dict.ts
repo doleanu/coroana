@@ -85,7 +85,7 @@ export type Dict = {
     address2: string;
     maps: string;
   };
-  footer: { copyright: string; concept: string; privacy: string };
+  footer: { copyright: string; privacy: string };
 };
 
 const ro: Dict = {
@@ -197,7 +197,6 @@ const ro: Dict = {
   footer: {
     copyright:
       "© 2026 Hotel & Restaurant Coroana · Șoseaua Iași – Târgu Frumos KM31, Războieni, Iași",
-    concept: "Concept de redesign",
     privacy: "Politica de confidențialitate",
   },
 };
@@ -311,7 +310,6 @@ const en: Dict = {
   footer: {
     copyright:
       "© 2026 Hotel & Restaurant Coroana · Iași – Târgu Frumos road KM31, Războieni, Iași",
-    concept: "Redesign concept",
     privacy: "Privacy policy (RO)",
   },
 };
@@ -425,7 +423,6 @@ const it: Dict = {
   footer: {
     copyright:
       "© 2026 Hotel & Restaurant Coroana · Strada Iași – Târgu Frumos KM31, Războieni, Iași",
-    concept: "Concept di redesign",
     privacy: "Informativa sulla privacy (RO)",
   },
 };
@@ -539,7 +536,6 @@ const es: Dict = {
   footer: {
     copyright:
       "© 2026 Hotel & Restaurant Coroana · Carretera Iași – Târgu Frumos KM31, Războieni, Iași",
-    concept: "Concepto de rediseño",
     privacy: "Política de privacidad (RO)",
   },
 };
@@ -653,7 +649,6 @@ const de: Dict = {
   footer: {
     copyright:
       "© 2026 Hotel & Restaurant Coroana · Straße Iași – Târgu Frumos KM31, Războieni, Iași",
-    concept: "Redesign-Konzept",
     privacy: "Datenschutzerklärung (RO)",
   },
 };
@@ -663,3 +658,9 @@ export const DICTS: Record<Locale, Dict> = { ro, en, it, es, de };
 export function localePath(locale: Locale): string {
   return locale === "ro" ? "/" : `/${locale}`;
 }
+
+/** hreflang alternates (incl. x-default) for the localized homepage set. */
+export const HREFLANG_LANGUAGES: Record<string, string> = {
+  ...Object.fromEntries(LOCALES.map((l) => [l, localePath(l)])),
+  "x-default": "/",
+};

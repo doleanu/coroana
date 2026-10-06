@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Site from "@/components/Site";
-import { DICTS, type Locale } from "@/lib/dict";
+import { DICTS, HREFLANG_LANGUAGES, type Locale } from "@/lib/dict";
 
 const SUB_LOCALES = ["en", "it", "es", "de"] as const;
 
@@ -22,7 +22,7 @@ export async function generateMetadata({
   return {
     title: d.metaTitle,
     description: d.metaDescription,
-    alternates: { canonical: `/${locale}` },
+    alternates: { canonical: `/${locale}`, languages: HREFLANG_LANGUAGES },
     openGraph: {
       title: d.metaTitle,
       description: d.metaDescription,

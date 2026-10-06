@@ -26,6 +26,9 @@ const nextConfig = {
       { source: "/evenimente/", destination: "/#evenimente", permanent: true },
       { source: "/botez", destination: "/#evenimente", permanent: true },
       { source: "/botez/", destination: "/#evenimente", permanent: true },
+      // Old accommodation page -> hotel section of the homepage.
+      { source: "/hotel", destination: "/#hotel", permanent: true },
+      { source: "/hotel/", destination: "/#hotel", permanent: true },
       { source: "/hotelrestaurant", destination: "/", permanent: true },
       { source: "/hotelrestaurant/", destination: "/", permanent: true },
       { source: "/contact-hotel", destination: "/#contact", permanent: true },
@@ -42,6 +45,9 @@ const nextConfig = {
       // English (/eng/*) mirrors of the same legacy routes.
       { source: "/eng", destination: "/en", permanent: true },
       { source: "/eng/", destination: "/en", permanent: true },
+      // Old English events page -> events section of the English homepage.
+      { source: "/eng/evenimente", destination: "/en#evenimente", permanent: true },
+      { source: "/eng/evenimente/", destination: "/en#evenimente", permanent: true },
       { source: "/eng/hotel", destination: "/en#hotel", permanent: true },
       { source: "/eng/hotel/", destination: "/en#hotel", permanent: true },
       { source: "/eng/restaurant", destination: "/en#restaurant", permanent: true },
