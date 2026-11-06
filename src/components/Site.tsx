@@ -3,6 +3,7 @@ import JsonLd from "@/components/JsonLd";
 import LegalLine from "@/components/LegalLine";
 import Reveal from "@/components/Reveal";
 import { DICTS, LOCALES, localePath, type Locale } from "@/lib/dict";
+import type { Rates } from "@/lib/rates";
 
 const TEL_RECEPTION = "+40232711500";
 const TEL_RECEPTION_2 = "+40755081783";
@@ -125,11 +126,11 @@ const HALLS = [
   { name: "Salon Serenity", cap: null, pct: 12 },
 ];
 
-export default function Site({ locale }: { locale: Locale }) {
+export default function Site({ locale, rates, priceRange }: { locale: Locale; rates: Rates; priceRange: string }) {
   const d = DICTS[locale];
   return (
     <main>
-      <JsonLd />
+      <JsonLd priceRange={priceRange} />
       {/* ————————————————— Header ————————————————— */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-ink-deep/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-page items-center justify-between gap-4 px-5 sm:h-[4.5rem] sm:px-8">
@@ -315,8 +316,8 @@ export default function Site({ locale }: { locale: Locale }) {
             <div className="mt-6 grid gap-6 lg:grid-cols-2">
               {(
                 [
-                  [d.hotel.rates.wingA, d.hotel.rates.rowsA],
-                  [d.hotel.rates.wingB, d.hotel.rates.rowsB],
+                  [d.hotel.rates.wingA, rates.rowsA],
+                  [d.hotel.rates.wingB, rates.rowsB],
                 ] as [string, [string, string][]][]
               ).map(([wing, rows]) => (
                 <div key={wing} className="border border-linen bg-ivory p-7 sm:p-9">

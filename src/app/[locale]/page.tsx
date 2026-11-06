@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Site from "@/components/Site";
 import { DICTS, HREFLANG_LANGUAGES, type Locale } from "@/lib/dict";
+import { getLiveRates } from "@/lib/rates";
 
 const SUB_LOCALES = ["en", "it", "es", "de"] as const;
 
-export const dynamicParams = false;
+
+// Room rates come from the owner-edited price list (/admin/precios); refreshed on demand when he saves.
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   return SUB_LOCALES.map((locale) => ({ locale }));
@@ -40,5 +43,6 @@ export default async function LocalePage({
 }) {
   const { locale } = await params;
   if (!SUB_LOCALES.includes(locale as (typeof SUB_LOCALES)[number])) notFound();
-  return <Site locale={locale as Locale} />;
+  const { rates, priceRange } = await getLiveRates(locale as Locale);
+  return <Site locale={locale as Locale} rates={rates} priceRange={priceRange} />;
 }

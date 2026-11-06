@@ -145,8 +145,11 @@ export function CookieSettingsButton() {
 export default function ConsentBanner() {
   const copy = useCopy();
   const [open, setOpen] = useState(false);
+  // the owner admin (/admin/*) is not the public site: no banner and no ad tag there
+  const isAdmin = usePathname().startsWith("/admin");
 
   useEffect(() => {
+    if (isAdmin) return;
     const choice = readChoice();
     if (choice === "granted") grant();
     else if (choice !== "denied") setOpen(true);
@@ -168,9 +171,9 @@ export default function ConsentBanner() {
       window.removeEventListener(OPEN_EVENT, onOpen);
       document.removeEventListener("click", onClick, true);
     };
-  }, []);
+  }, [isAdmin]);
 
-  if (!open) return null;
+  if (isAdmin || !open) return null;
 
   const choose = (choice: "granted" | "denied") => {
     saveChoice(choice);

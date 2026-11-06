@@ -10,7 +10,7 @@ const ADDRESS = {
 };
 
 // All values below are verified facts (site + Google profile) — nothing invented.
-const GRAPH = {
+const graph = (priceRange: string) => ({
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -27,7 +27,7 @@ const GRAPH = {
       telephone: "+40 232 711 500",
       email: "receptie@hotelcoroana.ro",
       numberOfRooms: 43,
-      priceRange: "150–390 RON",
+      priceRange,
       address: ADDRESS,
       // Coordinates resolved from the venue's own Google Maps place link — not guessed.
       geo: { "@type": "GeoCoordinates", latitude: 47.21972, longitude: 27.0620843 },
@@ -78,13 +78,13 @@ const GRAPH = {
       address: ADDRESS,
     },
   ],
-};
+});
 
-export default function JsonLd() {
+export default function JsonLd({ priceRange }: { priceRange: string }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(GRAPH) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph(priceRange)).replace(/</g, "\\u003c") }}
     />
   );
 }
