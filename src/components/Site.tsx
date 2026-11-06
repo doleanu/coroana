@@ -1,5 +1,6 @@
 import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
+import LegalLine from "@/components/LegalLine";
 import Reveal from "@/components/Reveal";
 import { DICTS, LOCALES, localePath, type Locale } from "@/lib/dict";
 
@@ -108,6 +109,15 @@ function LangSwitcher({
   );
 }
 
+// Dedicated landing pages (Romanian only).
+const EVENT_PAGES = [
+  { href: "/nunta", label: "Nunți" },
+  { href: "/conferinte", label: "Conferințe" },
+  { href: "/petreceri-firma", label: "Petreceri de firmă" },
+  { href: "/catering-firme", label: "Catering pentru firme" },
+  { href: "/pomeniri-praznice", label: "Pomeniri și praznice" },
+];
+
 const HALLS = [
   { name: "Salon Prestige", cap: "400–600", pct: 100 },
   { name: "Salon Moonlight", cap: "200–350", pct: 58 },
@@ -140,9 +150,30 @@ export default function Site({ locale }: { locale: Locale }) {
             <a className="transition-colors hover:text-gold-bright" href="#restaurant">
               {d.nav.restaurant}
             </a>
-            <a className="transition-colors hover:text-gold-bright" href="#evenimente">
-              {d.nav.events}
-            </a>
+            {locale === "ro" ? (
+              <div className="group relative">
+                <a className="transition-colors hover:text-gold-bright" href="#evenimente">
+                  {d.nav.events}
+                </a>
+                <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-5 opacity-0 transition-opacity duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <div className="min-w-[14rem] border border-white/10 bg-ink-deep/95 py-2 shadow-xl backdrop-blur-md">
+                    {EVENT_PAGES.map((p) => (
+                      <a
+                        key={p.href}
+                        href={p.href}
+                        className="block whitespace-nowrap px-5 py-3 text-ivory/80 transition-colors hover:bg-white/5 hover:text-gold-bright"
+                      >
+                        {p.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a className="transition-colors hover:text-gold-bright" href="#evenimente">
+                {d.nav.events}
+              </a>
+            )}
             <a className="transition-colors hover:text-gold-bright" href="#contact">
               {d.nav.contact}
             </a>
@@ -517,12 +548,26 @@ export default function Site({ locale }: { locale: Locale }) {
               </a>
             </div>
             {locale === "ro" ? (
-              <a
-                href="/nunta"
-                className="mt-6 inline-block border-b border-gold-bright/60 pb-0.5 font-sans text-[0.72rem] font-bold uppercase tracking-label text-gold-bright transition-colors hover:text-ivory"
-              >
-                {d.events.viewWeddingPage}
-              </a>
+              <div className="mt-8 flex flex-col gap-4">
+                <a
+                  href="/nunta"
+                  className="inline-block w-fit border-b border-gold-bright/60 pb-0.5 font-sans text-[0.72rem] font-bold uppercase tracking-label text-gold-bright transition-colors hover:text-ivory"
+                >
+                  {d.events.viewWeddingPage}
+                </a>
+                <p className="mt-4 small-caps-label text-ivory/60">Pentru firme și instituții</p>
+                <div className="flex flex-wrap gap-x-8 gap-y-3">
+                  {EVENT_PAGES.filter((p) => p.href !== "/nunta").map((p) => (
+                    <a
+                      key={p.href}
+                      href={p.href}
+                      className="inline-block border-b border-gold-bright/60 pb-0.5 font-sans text-[0.72rem] font-bold uppercase tracking-label text-gold-bright transition-colors hover:text-ivory"
+                    >
+                      {p.label} →
+                    </a>
+                  ))}
+                </div>
+              </div>
             ) : null}
           </Reveal>
         </div>
@@ -640,6 +685,7 @@ export default function Site({ locale }: { locale: Locale }) {
           activeClass="text-gold-bright"
         />
         <p className="mt-6 font-sans text-sm text-ivory/65">{d.footer.copyright}</p>
+        <LegalLine />
         <p className="mt-4">
           <a
             href="/confidentialitate"

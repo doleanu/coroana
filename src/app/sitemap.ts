@@ -13,6 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${BASE}/`, priority: 1, alternates: { languages } },
     { url: `${BASE}/nunta`, priority: 0.9 },
+    { url: `${BASE}/conferinte`, priority: 0.9 },
+    { url: `${BASE}/petreceri-firma`, priority: 0.9 },
+    { url: `${BASE}/catering-firme`, priority: 0.9 },
+    { url: `${BASE}/pomeniri-praznice`, priority: 0.9 },
     { url: `${BASE}/confidentialitate`, priority: 0.3 },
     { url: `${BASE}/en`, priority: 0.8, alternates: { languages } },
     { url: `${BASE}/it`, priority: 0.8, alternates: { languages } },

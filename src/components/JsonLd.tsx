@@ -17,6 +17,8 @@ const GRAPH = {
       "@type": "Hotel",
       "@id": `${BASE}/#hotel`,
       name: "Hotel & Restaurant Coroana",
+      legalName: "EURO D.E.C. SYSTEM SRL",
+      taxID: "17907129",
       description:
         "Hotel cu 43 de camere moderne, restaurant și Coroana Events — cea mai mare locație de evenimente din Moldova, la km 31 pe șoseaua Iași – Târgu Frumos.",
       url: `${BASE}/`,

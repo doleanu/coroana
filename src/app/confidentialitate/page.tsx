@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CookieSettingsButton } from "@/components/ConsentBanner";
 
 export const metadata: Metadata = {
   title: "Politica de confidențialitate — Hotel & Restaurant Coroana",
@@ -21,13 +22,15 @@ export default function ConfidentialitatePage() {
         <h1 className="heading-display mt-8 font-serif text-4xl font-light leading-[1.05] text-ink-deep sm:text-5xl">
           Politica de confidențialitate
         </h1>
-        <p className="mt-3 font-sans text-sm text-stone">Ultima actualizare: septembrie 2026</p>
+        <p className="mt-3 font-sans text-sm text-stone">Ultima actualizare: noiembrie 2026</p>
 
         <div className="mt-10 space-y-8 font-sans text-base leading-relaxed text-charcoal/85">
           <section>
             <h2 className="font-serif text-xl italic text-ink-deep">Cine suntem</h2>
             <p className="mt-2">
-              Acest site (hotelcoroana.ro) prezintă serviciile Hotel & Restaurant Coroana,
+              Acest site (hotelcoroana.ro) este operat de EURO D.E.C. SYSTEM SRL (CUI 17907129,
+              J2005002177222), cu sediul în Sat Războieni, Comuna Ion Neculce, Str. Cuza Vodă nr. 183,
+              jud. Iași, și prezintă serviciile Hotel & Restaurant Coroana,
               situat pe Șoseaua Iași – Târgu Frumos KM31 (DN28), 705311 Războieni, jud. Iași.
               Pentru orice întrebare legată de datele tale personale, ne poți scrie la{" "}
               <a className="text-gold-dim hover:text-ink" href="mailto:receptie@hotelcoroana.ro">
@@ -46,15 +49,35 @@ export default function ConfidentialitatePage() {
               Ce date colectăm prin acest site
             </h2>
             <p className="mt-2">
-              Site-ul hotelcoroana.ro nu folosește cookie-uri, pixeli de tracking sau
-              instrumente de analiză a traficului. Nu colectăm și nu stocăm date personale
-              doar prin navigarea pe site.
+              Dacă nu accepți cookie-urile, navigarea pe hotelcoroana.ro nu încarcă niciun
+              instrument de urmărire sau de analiză a traficului și nu colectăm date personale.
             </p>
             <p className="mt-2">
               Când ne contactezi telefonic, prin e-mail sau prin formularele de rezervare
               (recepție sau departamentul de evenimente), primim datele pe care ni le oferi
               tu direct — de regulă nume, telefon și adresă de e-mail — și le folosim exclusiv
               pentru a răspunde solicitării tale și a gestiona rezervarea.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-serif text-xl italic text-ink-deep">Cookie-uri și Google Ads</h2>
+            <p className="mt-2">
+              Doar dacă accepți în bannerul de cookie-uri, încărcăm eticheta Google Ads, furnizată
+              de Google Ireland Limited. O folosim ca să măsurăm dacă reclamele noastre aduc
+              cereri: înregistrăm vizita venită dintr-o reclamă și clicul pe un număr de telefon
+              sau pe o adresă de e-mail. Nu înregistrăm conținutul apelului sau al mesajului și
+              nu folosim aceste date pentru reclame personalizate.
+            </p>
+            <p className="mt-2">
+              Temeiul este consimțământul tău. Eticheta poate seta cookie-uri Google, precum{" "}
+              <code>_gcl_au</code>, valabile de regulă 90 de zile, iar Google poate prelucra datele
+              și în afara Uniunii Europene, inclusiv în SUA. Alegerea ta o păstrăm în browserul tău,
+              ca să nu te întrebăm din nou.
+            </p>
+            <p className="mt-2">
+              Îți poți schimba oricând alegerea: <CookieSettingsButton />. Dacă retragi acordul,
+              ștergem cookie-urile Google Ads de pe site și nu mai trimitem măsurători.
             </p>
           </section>
 

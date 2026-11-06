@@ -56,6 +56,12 @@ const nextConfig = {
       { source: "/eng/contact-hotel/", destination: "/en#contact", permanent: true },
       { source: "/eng/contact", destination: "/en#contact", permanent: true },
       { source: "/eng/contact/", destination: "/en#contact", permanent: true },
+      // Old corporate-events page now maps to the conferences landing page;
+      // the English news page has no equivalent, so fold it into /en.
+      { source: "/corporate", destination: "/conferinte", permanent: true },
+      { source: "/corporate/", destination: "/conferinte", permanent: true },
+      { source: "/eng/noutati", destination: "/en", permanent: true },
+      { source: "/eng/noutati/", destination: "/en", permanent: true },
       // /nunta has no English translation route; send to the RO page.
       { source: "/eng/nunta", destination: "/nunta", permanent: true },
       { source: "/eng/nunta/", destination: "/nunta", permanent: true },

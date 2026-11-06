@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LegalLine from "@/components/LegalLine";
 import Reveal from "@/components/Reveal";
 
 const TEL_RECEPTION = "+40232711500";
@@ -440,6 +441,7 @@ export default function NuntaPage() {
         <p className="font-sans text-[0.68rem] uppercase tracking-label text-ivory/35">
           © 2026 Hotel & Restaurant Coroana · Șoseaua Iași – Târgu Frumos KM31, Războieni, Iași
         </p>
+        <LegalLine />
         <p className="mt-4">
           <a
             href="/confidentialitate"

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
+import ConsentBanner from "@/components/ConsentBanner";
 import LangSync from "@/components/LangSync";
 import "./globals.css";
 
@@ -50,6 +51,7 @@ export default function RootLayout({
       <body className="bg-paper font-sans text-charcoal antialiased">
         <LangSync />
         {children}
+        <ConsentBanner />
       </body>
     </html>
   );
